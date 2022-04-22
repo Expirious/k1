@@ -28,10 +28,16 @@ function generateRandomNumbers() {
     //printNumbers();
 }
 
-function swap(arr, x1, x2) {
-    let temp = arr[x1];
-    arr[x1] = arr[x2];
-    arr[x2] = temp;
+/**
+ * Swaps array[i] with array[j]
+ * @param arr
+ * @param i
+ * @param j
+ */
+function swap(arr, i, j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
 }
 
 function bubbleSort() {
