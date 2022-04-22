@@ -24,11 +24,11 @@ function generateRandomNumbers() {
     for (let i = 0; i < 10; i++) {
         numbers.push(Math.random() * 100);
     }
-    return numbers;
+    return numbers.map((num) => {return Math.trunc(num)});
     //printNumbers();
 }
 
-function swap(arr, x1, x2 ) {
+function swap(arr, x1, x2) {
     let temp = arr[x1];
     arr[x1] = arr[x2];
     arr[x2] = temp;
@@ -43,7 +43,7 @@ function bubbleSort() {
 
         for (let i = 0; i < numbers.length - 1; i++)
             if (numbers[i] > numbers[i + 1]) {
-                swap(numbers[i], numbers[i + 1]);
+                swap(numbers, i, i + 1);
                 sorted = false;
                 steps++;
             }
@@ -51,19 +51,21 @@ function bubbleSort() {
 }
 
 function App() {
-    const [array, setArray] = useState([]);
+    const [displayArray, setDisplayArray] = useState([]);
     console.log("rendering");
     return (
         <div>
             <div>
                 <button onClick={() => {
-                    setArray(generateRandomNumbers)
+                    setDisplayArray(generateRandomNumbers)
                 }}>Generate Numbers
                 </button>
             </div>
 
             <div>
-                <p></p>
+                <p>
+                    {displayArray.map((num) => {return num + " "})}
+                </p>
             </div>
 
             <div>
