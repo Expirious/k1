@@ -20,11 +20,15 @@ function printNumbers() {
     return output;
 }
 
+/**
+ * @returns {number[]} , an array of random numbers
+ */
 function generateRandomNumbers() {
+    const rands = [];
     for (let i = 0; i < 10; i++) {
-        numbers.push(Math.random() * 100);
+        rands.push(Math.random() * 100);
     }
-    return numbers.map((num) => {return Math.trunc(num)});
+    return rands.map((num) => {return Math.trunc(num)});
     //printNumbers();
 }
 
