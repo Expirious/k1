@@ -5,7 +5,7 @@ let numbers = [];
 let changed = false;
 let ascendingOrder = "true"
 
-/** Variable functions. Change according to choices. Don't repeat yourself ;) */
+/** Variable functions. Change according to choices. Keeping things DRY (Don't repeat yourself) ;) */
 let comparisonFunction = compareAscending;
 let sortingFunction = bubbleSort;
 
@@ -81,7 +81,8 @@ function bubbleSort() {
     let sorted = false;
     while (!sorted) {
         sorted = true;
-        for (let i = 0; i < numbers.length - 1; i++) if (comparisonFunction(numbers[i], numbers[i + 1])) {
+        for (let i = 0; i < numbers.length - 1; i++)
+            if (comparisonFunction(numbers[i], numbers[i + 1])) {
             swap(numbers, i, i + 1);
             sorted = false;
             steps++;
