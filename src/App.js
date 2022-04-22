@@ -3,6 +3,7 @@ import './App.css';
 
 let numbers = [];
 let changed = false;
+let ascendingOrder = "true"
 
 function refresh() {
     while (true) {
@@ -80,8 +81,8 @@ function App() {
 
             <div>
                 <select>
-                    <option>Ascending</option>
-                    <option>Descending</option>
+                    <option onSelect={()=>{ascendingOrder = true}}>Ascending</option>
+                    <option onSelect={()=>{ascendingOrder = false}}>Descending</option>
                 </select>
             </div>
 
