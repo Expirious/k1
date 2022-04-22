@@ -1,32 +1,85 @@
 import logo from './logo.svg';
 import './App.css';
-// Our sample dropdown options
-const options = ['BubbleSort', 'InsertionSort', 'SelectionSort', 'QuickSort'];
 
-/**
- * Returns random numbers array
- * @param count
- * @param range
- */
-function randomNumbers(count, range) {
-    let x = [];
-    for (let i = 0; i < count; i++) {
-        x.push(Math.random() * range + 1);
+let numbers = [];
+let changed = false;
+
+function refresh(){
+    while(true){
+        if (changed){
+            printNumbers();
+        }
     }
-    //1,2,3,4
-    return x.map((num) => {
-        return Math.trunc(num)
-    }); //copy
+}
+
+function printNumbers(){
+    let output;
+    for (let i = 0; i < numbers.length; i++){
+        output += numbers[i].toString() + " ";
+    }
+
+    return output;
+}
+
+function generateRandomNumbers(){
+    for(let i = 0; i < 10; i++){
+        numbers.push(Math.random() * 100);
+    }
+
+    printNumbers();
+}
+
+function swap(number1, number2){
+    let temp = number1;
+    number1.prop = number2;
+    number2.prop = temp;
+}
+
+function bubbleSort(){
+    let steps = 0;
+    let sorted = false;
+
+    while(!sorted){
+        sorted = true;
+
+        for (let i = 0; i < numbers.length - 1; i++)
+            if (numbers[i] > numbers[i + 1]){
+                swap(numbers[i], numbers[i + 1]);
+                sorted = false;
+
+                steps++;
+            }
+    }
 }
 
 function App() {
-    return (
-        <div className="Random numbers">
-            <p>{randomNumbers(10, 100).map((num) => {
-                return num + " "
-            })}</p>
-        </div>
-    );
+  return (
+      <div>
+          <div>
+              <button onClick={generateRandomNumbers}>Generate Numbers</button>
+          </div>
+
+          <div>
+              <p></p>
+          </div>
+
+          <div>
+              <select>
+                  <option>Ascending</option>
+                  <option>Descending</option>
+              </select>
+          </div>
+
+          <div>
+              <select>
+                  <option onSelect={bubbleSort()}>Bubble Sort</option>
+                  <option>Insertion Sort</option>
+                  <option>Selection Sort</option>
+                  <option>Quick Sort</option>
+              </select>
+          </div>
+      </div>
+  );
 }
 //test
 export default App;
